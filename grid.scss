@@ -1,0 +1,50 @@
+/* 
+	== STRUCTURE: ========================
+	* Page width:            988 px
+	* Number of columns:     18
+	* Column width:          36 px
+	* Margin width:          20 px
+	* Sass Gird System from Blueprint by Sivan
+	* http://lightcss.com/
+	======================================
+*/
+$column-width: 36px;
+$gutter-width: 20px;
+$columns: 18;
+$plus: $column-width + $gutter-width;
+
+@mixin grid($i, $col-type: '') {
+	@if $col-type == 'append' {
+		padding-right: $plus * $i;
+	} @else if $col-type == 'prepend' {
+		padding-right: $plus * $i;
+	} @else if $col-type == 'pull' {
+		margin-left: -$plus * $i;
+		float: left;
+		position: relative;
+	} @else if $col-type == 'push' {
+		margin: 0 -$plus * $i 1.5em $plus * $i;
+		float: left;
+		position: relative;
+	} @else {
+		width: $column-width * $i + $gutter-width * ($i - 1);
+		@if $i == $columns {
+			margin: 0;
+		} @else {
+			float: left;
+			@if $col-type == 'last' {
+				margin: 0;
+			} @else {
+				margin-right: $gutter-width;
+			}
+		}
+	}
+}
+ /* Example */
+.container { width:988px;margin:0 auto; }
+.content-main {
+	@include grid(12);
+}
+.content-sub {
+	@include grid(6, 'push');
+}
