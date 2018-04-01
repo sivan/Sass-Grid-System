@@ -41,15 +41,15 @@
 在载入本框架后，代码如下
 
 ``` sass
-  .container {
-    @include grid('wrap');
-  }
-  .content-main {
-    @include grid(12);
-  }
-  .content-sub {
-    @include grid(6, 'last');
-  }
+.container {
+  @include grid('wrap');
+}
+.content-main {
+  @include grid(12);
+}
+.content-sub {
+  @include grid(6, 'last');
+}
 ```
 
 ## 更多说明
