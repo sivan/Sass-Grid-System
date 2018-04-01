@@ -1,12 +1,12 @@
 /* 
-	== STRUCTURE: ========================
-	* Page width:            988 px
-	* Number of columns:     18
-	* Column width:          36 px
-	* Margin width:          20 px
-	* Sass Gird System from Blueprint by Sivan
-	* http://lightcss.com/
-	======================================
+  == STRUCTURE: ========================
+  * Page width:            988 px
+  * Number of columns:     18
+  * Column width:          36 px
+  * Margin width:          20 px
+  * Sass Gird System from Blueprint by Sivan
+  * http://lightcss.com/
+  ======================================
 */
 $column-width: 36px;
 $gutter-width: 20px;
@@ -15,56 +15,57 @@ $plus: $column-width + $gutter-width;
 $wrap-width: $column-width * $columns + ($columns - 1) * $gutter-width;
 
 @mixin grid($i, $col-type: '') {
-	@if $i == 'wrap' {
-		width: $wrap-width;
-		margin: 0 auto;
-	} @else {
-		@if $col-type == 'append' {
-			padding-right: $plus * $i;
-		} @else if $col-type == 'prepend' {
-			padding-right: $plus * $i;
-		} @else if $col-type == 'pull' {
-			margin-left: -$plus * $i;
-			float: left;
-			position: relative;
-		} @else if $col-type == 'push' {
-			margin: 0 -$plus * $i 1.5em $plus * $i;
-			float: left;
-			position: relative;
-		} @else {
-			width: $column-width * $i + $gutter-width * ($i - 1);
-			@if $i == $columns {
-				margin: 0;
-			} @else {
-				float: left;
-				@if $col-type == 'last' {
-					margin: 0;
-				} @else {
-					margin-right: $gutter-width;
-				}
-			}
-		}
-	}
+  @if $i == 'wrap' {
+    width: $wrap-width;
+    margin: 0 auto;
+  } @else {
+    @if $col-type == 'append' {
+      padding-right: $plus * $i;
+    } @else if $col-type == 'prepend' {
+      padding-right: $plus * $i;
+    } @else if $col-type == 'pull' {
+      margin-left: -$plus * $i;
+      float: left;
+      position: relative;
+    } @else if $col-type == 'push' {
+      margin: 0 -$plus * $i 1.5em $plus * $i;
+      float: left;
+      position: relative;
+    } @else {
+      width: $column-width * $i + $gutter-width * ($i - 1);
+      @if $i == $columns {
+        margin: 0;
+      } @else {
+        float: left;
+        @if $col-type == 'last' {
+          margin: 0;
+        } @else {
+          margin-right: $gutter-width;
+        }
+      }
+    }
+  }
 }
- /* Example */
+
+ /* Examples */
 .container {
-	@include grid('wrap');
+  @include grid('wrap');
 }
 .content-main {
-	@include grid(12);
+  @include grid(12);
 }
 .content-sub {
-	@include grid(6, 'last');
+  @include grid(6, 'last');
 }
 .content-append {
-	@include grid(9, 'append');
+  @include grid(9, 'append');
 }
 .content-prepend {
-	@include grid(9, 'prepend');
+  @include grid(9, 'prepend');
 }
 .content-pull {
-	@include grid(3, 'pull');
+  @include grid(3, 'pull');
 }
 .content-push {
-	@include grid(6, 'push');
+  @include grid(6, 'push');
 }
